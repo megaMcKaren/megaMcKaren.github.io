@@ -1,0 +1,19 @@
+* {
+  color: white;
+  font-family: "Courier New", monospace;
+}
+
+body {
+  background-color: #300020
+}
+
+img {
+  width: 72%;
+  aspect-ratio: 3/2;
+  margin: 35px;
+}
+
+div.center {
+  display: grid;
+  place-items: center;
+}
