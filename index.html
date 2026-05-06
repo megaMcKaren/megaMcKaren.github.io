@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Alex's Photo Exhibit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="drawer">
+        <h2 class="drawer-title">View</h2>
+        <div class="view-nav">
+          <button class="nav-btn active" id="nav-home">Home</button>
+          <button class="nav-btn" id="nav-gallery">Gallery</button>
+        </div>
+
+        <h2 class="drawer-title" style="margin-top:18px">Filters</h2>
+        <div class="filters">
+          <button class="pill active" data-filter="all" id="filter-all">All</button>
+          <button class="pill active" data-filter="miscellaneous">Miscellaneous</button>
+          <button class="pill active" data-filter="animals">Animals</button>
+          <button class="pill active" data-filter="flowers">Flowers</button>
+          <button class="pill active" data-filter="scenery">Scenery</button>
+        </div>
+        <p class="hint">Click the categories to toggle filters. Multi-select supported.</p>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <h1>Alex's Photo Exhibit</h1>
+        </header>
+
+        <section class="home" id="home" aria-live="polite">
+          <div class="featured">
+            <button class="feat-nav feat-prev" aria-label="Previous featured">‹</button>
+            <div class="feat-stage">
+              <img class="feat-image" src="" alt="" />
+              <div class="feat-label"></div>
+            </div>
+            <button class="feat-nav feat-next" aria-label="Next featured">›</button>
+          </div>
+        </section>
+
+        <section class="gallery" id="gallery" aria-live="polite" hidden></section>
+
+        <div class="empty" id="emptyMsg" hidden>No photos match the selected filters.</div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

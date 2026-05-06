@@ -1,0 +1,149 @@
+:root{
+  --bg: #121212;
+  --panel: #1a1a1a;
+  --muted: #9a9a9a;
+  --accent: #7c4dff;
+  --pill-on-bg: rgba(23, 2, 82, 0.12);
+}
+*{box-sizing:border-box}
+html,body,#app{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#eee;
+  -webkit-font-smoothing:antialiased;
+}
+.app{display:flex;min-height:100vh}
+.drawer{
+  width:240px;
+  padding:24px;
+  background:linear-gradient(180deg,var(--panel),#111);
+  border-right:1px solid rgba(255,255,255,0.03);
+}
+.drawer-title{margin:0 0 12px 0;font-size:14px;color:var(--muted);font-weight:600}
+.filters{display:flex;flex-direction:column;gap:10px}
+.pill{
+  padding:10px 14px;
+  border-radius:999px;
+  background:transparent;
+  color:#ddd;
+  border:1px solid rgba(255,255,255,0.04);
+  text-align:left;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.pill:focus{outline:none;box-shadow:0 0 0 3px rgba(61, 26, 155, 0.12)}
+.pill.active{
+  background:var(--pill-on-bg);
+  border-color:rgba(124,77,255,0.35);
+  box-shadow:0 6px 18px rgba(124,77,255,0.08);
+  color:#fff;
+}
+.hint{margin-top:18px;color:var(--muted);font-size:13px}
+
+.main{flex:1;padding:28px}
+.header h1{margin:0 0 18px 0;font-size:22px}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+}
+.photo{overflow:hidden;border-radius:12px;height:240px;background:#fff;display:flex;align-items:center;justify-content:center}
+.photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .25s ease, box-shadow .2s ease, opacity .18s ease;
+  border-radius:12px;
+  background:#fff;
+  opacity:1;
+}
+.photo img.placeholder{opacity:0.98}
+
+.view-nav{display:flex;gap:8px;margin-bottom:6px}
+.nav-btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#ddd;cursor:pointer}
+.nav-btn.active{background:var(--pill-on-bg);border-color:rgba(124,77,255,0.35);color:#fff}
+
+.featured{display:flex;align-items:center;justify-content:center;gap:12px}
+.feat-stage{width:min(68vw,720px);height:min(56vh,420px);display:flex;align-items:center;justify-content:center;position:relative}
+.feat-image{max-width:100%;max-height:100%;object-fit:cover;border-radius:12px;background:#fff}
+.feat-label{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(10,10,10,0.6);color:#fff;font-size:14px}
+.feat-nav{border-radius:50%;width:44px;height:44px}
+
+.empty{margin-top:18px;color:var(--muted)}
+
+/* Responsive: collapse drawer to top on small screens */
+@media (max-width:720px){
+  .app{flex-direction:column}
+  .drawer{width:100%;display:flex;flex-direction:row;align-items:center;gap:12px;padding:12px}
+  .filters{flex-direction:row;gap:8px;overflow:auto}
+  .drawer-title{display:none}
+  .main{padding:16px}
+}
+
+/* Use display:none for hidden elements to work with layout */
+[hidden]{display:none !important}
+
+/* Lightbox styles (created dynamically by JS) */
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  background:rgba(0,0,0,0.88);
+  z-index:1000;
+  padding:24px;
+}
+.lightbox-content{
+  max-width:min(92vw, 1200px);
+  max-height:92vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+}
+.lightbox-image{
+  max-width:100%;
+  max-height:calc(92vh - 72px);
+  object-fit:contain;
+  border-radius:14px;
+  box-shadow:0 18px 60px rgba(0,0,0,0.65);
+}
+.lightbox-label{
+  color:#eaeaea;
+  background:rgba(20,20,20,0.7);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:14px;
+}
+.lightbox-nav,
+.lightbox-close{
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(24,24,24,0.85);
+  color:#f2f2f2;
+  cursor:pointer;
+}
+.lightbox-nav{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  font-size:30px;
+  line-height:1;
+}
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:28px;
+  line-height:1;
+}
+.lightbox-nav:disabled{opacity:0.35;cursor:not-allowed}
