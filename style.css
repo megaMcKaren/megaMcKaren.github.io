@@ -35,9 +35,16 @@ li a:hover {
 }
 
 img {
-  width: 80%;
-  aspect-ratio: 3/2;
-  margin: 35px;
+    width: 75%;
+    height: auto;
+    aspect-ratio: 3/2;
+    margin: auto;
+}
+
+.gallery img {
+  width: 100%;
+  margin-bottom: 8.2px;
+  max-width: none;
 }
 
 div.center {
@@ -51,16 +58,15 @@ body {
   padding: 0;
   background-color:#0b0108;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  padding: 5px;
 }
 /* Gallery grid layout */
 .gallery {
   display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 15px;
-  width: 100%;
-  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);;
+  gap: 28px;
+  width: 82vw;
+  max-width: none;
+  margin: auto;
 }
