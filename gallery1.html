@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alex's Photo Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class = "center">
+
+    <div class = "topBar">
+    
+    <h1>Alex's Photo Portfolio | Gallery 1</h1> 
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a style = "border-bottom: 5px solid rgb(255, 255, 255);">Gallery 1</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+
+    </div>
+
+    <h2>These are the photos I took most recently for the Passion Project. Feel free to check out each custom caption, they took me a while! Thank you so much for visiting! -Alex</h2>
+
+    <div class = "sizedBox"></div>
+    <div class = "sizedBox"></div>
+
+
+    <div id="gallery" class = "gallery"></div>
+
+    <div class = "sizedBox"></div>
+    <div class = "sizedBox"></div>
+
+    <div id = "modal" class = "modal">
+      <button id = "modal-btn-prev" class="modal-btn" onclick="prevPhoto()">❮</button>
+      <img id = "modal-image" src=""></img>
+      <div id="modal-desc"></div>
+      <button id = "modal-btn-close" class="modal-btn" onclick="closeModal()">✕</button>
+      <button id = "modal-btn-next" class="modal-btn" onclick="nextPhoto()">❯</button>
+    </div>
+    
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
