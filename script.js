@@ -134,6 +134,7 @@ if (highlightImg) {
 
 
 function openModal(index) {
+  currentIndex = index;
   modalImg.src = photos[index].src;
   description.textContent = photos[index].description;
   gallery.style.pointerEvents = "none";
