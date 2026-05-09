@@ -81,7 +81,7 @@ const photos = [
   {"src": "assets/gallery1/img80.JPG", "description": "Shh! -Mute"},
   {"src": "assets/gallery1/img81.JPG", "description": "Don't mind me! -Weed"},
   {"src": "assets/gallery1/img82.JPG", "description": "Are you hungry? -Noodles"},
-  {"src": "assets/gallery1/img83.JPG", "description": "Press me to change notes -Valves"},
+  {"src": "assets/gallery1/img83.JPG", "description": "Press me to change notes! -Valves"},
   {"src": "assets/gallery1/img84.JPG", "description": "I'm one special egg! -Egg"},
   {"src": "assets/gallery1/img85.JPG", "description": "Ain't I hot? -Blue Fire"},
   {"src": "assets/gallery1/img86.JPG", "description": "My patterns are cool! Do you like them? -Plant"},
@@ -104,10 +104,12 @@ const topBar = document.querySelector('.topBar');
 const hTwos = document.querySelectorAll('h2');
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-image');
+const modalImgBuffer = document.getElementById('modal-image-buffer');
 const description = document.getElementById('modal-desc');
 
 var currentIndex = 0;
 var scrollPos = 0;
+var changingPhoto = false;
 
 // Index / Home Page
 
@@ -142,9 +144,11 @@ function openModal(index) {
   description.textContent = photos[index].description;
   gallery.style.pointerEvents = "none";
   gallery.style.display = "none";
+
   modal.style.zIndex = "1000";
   modal.style.display = "flex";
   modal.classList.add("fade-in");
+
   topBar.style.display = "none";
   hTwos.forEach(hTwo => {
     hTwo.style.display = "none";
@@ -186,23 +190,31 @@ function closeModal() {
   modal.style.zIndex = "1";
 }
 
-function nextPhoto() {
-  modal.classList.add("fade-out");
-  setTimeout(() => {
-    currentIndex = (currentIndex + 1) % photos.length;
-    modalImg.src = photos[currentIndex].src;
-    description.textContent = photos[currentIndex].description;
-    modal.classList.remove("fade-out");
-  }, 125);
-  
+function changePhoto(direction) { // 1 or -1
+    if (changingPhoto) return;
+    changingPhoto = true;
+    modal.classList.add("fade-out");
+    setTimeout(() => {
+        currentIndex = (currentIndex + direction) % photos.length;
+        modalImg.src = photos[currentIndex].src;
+        description.textContent = photos[currentIndex].description;
+        modal.classList.remove("fade-out");
+    }, 125);
+    setTimeout(() => {
+        changingPhoto = false;
+    }, 300);
 }
 
-function prevPhoto() {
-  modal.classList.add("fade-out");
-  setTimeout(() => {
-    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-    modalImg.src = photos[currentIndex].src;
-    description.textContent = photos[currentIndex].description;
-    modal.classList.remove("fade-out");
-  }, 125);
-}
+document.addEventListener('keydown', (event) => {
+    if (modal.style.display === "flex") {
+        if (event.key === 'ArrowRight') {
+            changePhoto(1);
+        }
+        else if (event.key === 'ArrowLeft') {
+            changePhoto(-1);
+        }
+        else if (event.key === 'Escape') {
+            closeModal();
+        }
+    }
+});

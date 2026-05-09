@@ -35,11 +35,11 @@
     <div class = "sizedBox"></div>
 
     <div id = "modal" class = "modal">
-      <button id = "modal-btn-prev" class="modal-btn" onclick="prevPhoto()">❮</button>
+      <button id = "modal-btn-prev" class="modal-btn" onclick="changePhoto(-1)">❮</button>
       <img id = "modal-image" src=""></img>
       <div id="modal-desc"></div>
       <button id = "modal-btn-close" class="modal-btn" onclick="closeModal()">✕</button>
-      <button id = "modal-btn-next" class="modal-btn" onclick="nextPhoto()">❯</button>
+      <button id = "modal-btn-next" class="modal-btn" onclick="changePhoto(1)">❯</button>
     </div>
     
     </div>

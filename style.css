@@ -61,7 +61,7 @@
 }
 
 #modal.fade-in {
-  animation: fadeIn 0.2s;
+  animation: fadeIn 0.25s;
 }
 
 @keyframes fadeIn {
@@ -70,7 +70,7 @@
 }
 
 #modal.fade-out {
-  animation: fadeOut 0.2s;
+  animation: fadeOut 0.25s;
 }
 
 @keyframes fadeOut {
@@ -78,7 +78,8 @@
   to { opacity: 0; }
 }
 
-#modal-image {
+#modal-image{
+  position: fixed;  
   left: 0%;
   top: 0%;
   width: 100%;
