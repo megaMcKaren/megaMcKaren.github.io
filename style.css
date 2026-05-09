@@ -32,8 +32,36 @@
 
 }
 
+.modal-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#modal-btn-close {
+  top: 40px;
+  right: 20px;
+  width: 3%;
+  aspect-ratio: 1/1;
+}
+
+#modal-btn-prev {
+  left: 20px;
+}
+
+#modal-btn-next {
+  right: 20px;
+}
+
 #modal.fade-in {
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.2s;
 }
 
 @keyframes fadeIn {
@@ -42,7 +70,7 @@
 }
 
 #modal.fade-out {
-  animation: fadeOut 0.3s;
+  animation: fadeOut 0.2s;
 }
 
 @keyframes fadeOut {
@@ -76,7 +104,7 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 700;
   font-size: 20px;
   text-align: center;
@@ -87,8 +115,13 @@ li a {
   border-radius: 5px;
 }
 
+/* check idk */
+
 li a:hover {
-    background-color: #b47d31;
+    background-color: #e3ca4d;
+    box-shadow: 3px 3px 10px whitesmoke;
+    position: relative;
+    transform: scale(1.03);
 }
 
 h1 {

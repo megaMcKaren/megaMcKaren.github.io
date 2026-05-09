@@ -100,6 +100,7 @@ const photos = [
 // Gallery Page
 
 const gallery = document.getElementById('gallery');
+const topBar = document.querySelector('.topBar');
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-image');
 const description = document.getElementById('modal-desc');
@@ -140,6 +141,7 @@ function openModal(index) {
   modal.style.zIndex = "1000";
   modal.style.display = "flex";
   modal.classList.add("fade-in");
+  topBar.style.display = "none";
 }
 
 function closeModal() {
@@ -150,22 +152,28 @@ function closeModal() {
     gallery.style.display = "grid";
     gallery.style.pointerEvents = "auto";
     modal.classList.remove("fade-out");
-  }, 200); 
+    topBar.style.display = "block";
+  }, 175); 
   modal.style.zIndex = "1";
 }
 
 function nextPhoto() {
-  currentIndex = (currentIndex + 1) % photos.length;
-  modalImg.src = photos[currentIndex].src;
-  description.textContent = photos[currentIndex].description;
+  modal.classList.add("fade-out");
+  setTimeout(() => {
+    currentIndex = (currentIndex + 1) % photos.length;
+    modalImg.src = photos[currentIndex].src;
+    description.textContent = photos[currentIndex].description;
+    modal.classList.remove("fade-out");
+  }, 125);
+  
 }
 
 function prevPhoto() {
-  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  modalImg.src = photos[currentIndex].src;
-  description.textContent = photos[currentIndex].description;
-}
-
-modal.onclick = function() {
-    closeModal();
+  modal.classList.add("fade-out");
+  setTimeout(() => {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    modalImg.src = photos[currentIndex].src;
+    description.textContent = photos[currentIndex].description;
+    modal.classList.remove("fade-out");
+  }, 125);
 }

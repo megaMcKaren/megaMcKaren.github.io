@@ -10,13 +10,17 @@
   <body>
 
     <div class = "center">
+
+    <div class = "topBar">
     
     <h1>Alex's Gallery</h1> 
 
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a>Gallery</a></li>
+      <li><a style = "border-bottom: 5px solid rgb(255, 255, 255);">Gallery</a></li>
     </ul>
+
+    </div>
 
 
     <div id="gallery" class = "gallery">
@@ -37,11 +41,11 @@
     </div>
 
     <div id = "modal" class = "modal">
-      <!-- <span class = "close" onclick="closeModal()">&times;</span> -->
-      <div class = "modal-content">
-        <img id = "modal-image" src=""></img>
-        <div id="modal-desc"></div>
-      </div>
+      <button id = "modal-btn-prev" class="modal-btn" onclick="prevPhoto()">❮</button>
+      <img id = "modal-image" src=""></img>
+      <div id="modal-desc"></div>
+      <button id = "modal-btn-close" class="modal-btn" onclick="closeModal()">✕</button>
+      <button id = "modal-btn-next" class="modal-btn" onclick="nextPhoto()">❯</button>
     </div>
     
     </div>
