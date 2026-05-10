@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alex's Photo Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+    <div class = "center">
+
+    <div class = "topBar">
+
+    
+      <h1>Alex's Photo Portfolio | Home</h1>
+    
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/gallery1.html">Gallery 1</a></li>
+      <li><a href="/gallery2.html">Gallery 2</a></li>
+      <li><a href="/about.html">About Me</a></li>
+      <li><a style="border-bottom: 5px solid rgb(255, 255, 255);" href="/contact.html">Contact</a></li>
+    </ul>
+
+    </div>
+
+    <h2>Contact me for any questions, requests, or feedback!</h2>
+
+    <h3>Please don't spam the form, as I have a limited number of requests available in a month.</h3>
+
+    <div class = "sizedBox"></div>
+    <div class = "sizedBox"></div>
+
+    <form id="contact-form">
+      <input type="text" name="user_name" placeholder="Your Name" required></input>
+      <input type="email" name="user_email" placeholder="Your Email" required></input>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+    <div class = "sizedBox"></div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+    setTimeout(function() {
+        console.log('emailjs type:', typeof emailjs);
+        
+        if (typeof emailjs !== 'undefined') {
+        emailjs.init("gcTc_fPgDVexvfloL");
+        console.log('EmailJS initialized!');
+        } else {
+        console.log('EmailJS failed to load');
+        }
+        
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        emailjs.sendForm('service_kc7bix2', 'template_6az6oaq', this)
+            .then(response => {
+            console.log('Email sent!', response);
+            alert('Email sent successfully!');
+            })
+            .catch(error => {
+            console.log('Error:', error);
+            alert('Failed to send email');
+            });
+        });
+    }, 500);
+    </script>
+
+  </body>
+</html>
