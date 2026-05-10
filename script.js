@@ -99,8 +99,8 @@ const latestPhotos = [
 
 const oldPhotos = [
   {"src": "assets/gallery2/img1.JPG", "description": "I got the coolest patterns on my cap! -Small Bird"},
-  {"src": "assets/gallery2/img2.JPG", "description": "I'm a BUTTERFLY! -Butterfly"},
-  {"src": "assets/gallery2/img3.JPG", "description": "Hey, I see you swimming down in the bottom right! -Seal | P.S. I didn't see the swimming seal until after reviewing the photos"},
+  {"src": "assets/gallery2/img2.JPG", "description": "Hey, I see you swimming down in the bottom right! -Seal | P.S. I didn't see the swimming seal until after reviewing the photos"},
+  {"src": "assets/gallery2/img3.JPG", "description": "I'm a BUTTERFLY! -Butterfly"},
   {"src": "assets/gallery2/img4.JPG", "description": "Gotta make a leap of faith! -Ground Squirrel"},
   {"src": "assets/gallery2/img5.JPG", "description": "Yep, I'm taking another swim. -Seal"},
   {"src": "assets/gallery2/img6.JPG", "description": "I'm an ISLAND! -Wizard Island (Crater Lake National Park)"},
