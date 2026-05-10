@@ -260,6 +260,7 @@ const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-image');
 const modalImgBuffer = document.getElementById('modal-image-buffer');
 const description = document.getElementById('modal-desc');
+const modalImgCounter = document.getElementById('modal-img-counter');
 
 var currentIndex = 0;
 var scrollPos = 0;
@@ -307,6 +308,7 @@ if (highlightImg) {
 function openModal(index, gallery, photos) {
   scrollPos = window.scrollY;
   currentIndex = index;
+  modalImgCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
   currentImageElement = gallery.children[index];
   modalImg.src = photos[index].src;
   description.textContent = photos[index].description;
@@ -375,6 +377,7 @@ function changePhoto(direction, photos) { // 1 or -1
 
         modalImg.src = photos[currentIndex].src;
         description.textContent = photos[currentIndex].description;
+        modalImgCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
         modal.classList.remove("fade-out");
     }, 125);
     setTimeout(() => {

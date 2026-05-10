@@ -41,8 +41,11 @@
       <img id = "modal-image" src=""></img>
       <div id="modal-desc"></div>
 
+      <div class = "modal-half modal-half-left" onclick="changePhoto(-1, oldPhotos)"></div>
+      <div class = "modal-half modal-half-right" onclick="changePhoto(1, oldPhotos)"></div>
 
-      
+      <div id = "modal-img-counter"></div>
+
       <button id = "modal-btn-close" class="modal-btn" onclick="closeModal(gallery2)">✕</button>
       <button id = "modal-btn-next" class="modal-btn" onclick="changePhoto(1, oldPhotos)">❯</button>
     </div>

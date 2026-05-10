@@ -104,6 +104,45 @@
   height: 100%;
 }
 
+#modal-img-counter {
+  margin-left: 20px;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  z-index: 1001;
+  font-size: 25px;
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-weight: 550;
+  transition: all 0.1s ease-in-out;
+  text-shadow: none;
+}
+
+#modal-img-counter:hover {
+  background-color: rgba(0, 0, 0, 0.67);
+  transform: scale(1.12);
+  color: rgb(255, 222, 101);
+  text-shadow: 1px 1px 25px whitesmoke;
+}
+
+.modal-half {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.modal-half-left {
+  left: 0;
+}
+
+.modal-half-right {
+  right: 0;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
