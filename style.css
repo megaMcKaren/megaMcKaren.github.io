@@ -1,6 +1,7 @@
 * {
   color: white;
-  font-family: "Courier New", monospace;
+  font-family: "Avantgarde", "TeX Gyre Adventor", "URW Gothic L", sans-serif;
+  
 }
 
 #modal {
@@ -25,24 +26,41 @@
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   z-index: 1001;
   font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.35);
   padding: 10px 20px;
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 550;
+  transition: all 0.1s ease-in-out;
+  text-shadow: none;
 
+}
+
+#modal-desc:hover {
+  background-color: rgba(0, 0, 0, 0.67);
+  transform: translateX(-50%) scale(1.12);
+  color: rgb(255, 222, 101);
+  text-shadow: 1px 1px 25px whitesmoke;
 }
 
 .modal-btn {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
   border: none;
   color: white;
   font-size: 30px;
   padding: 10px;
   cursor: pointer;
   z-index: 1001;
+  transition: all 0.1s ease-in-out;
+}
+
+.modal-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+  color: rgb(255, 222, 101);
+  text-shadow: 1px 1px 25px whitesmoke;
 }
 
 #modal-btn-close {
@@ -83,9 +101,7 @@
   left: 0%;
   top: 0%;
   width: 100%;
-  height: auto;
-  aspect-ratio: 3/2;
-  margin: 0 auto;
+  height: 100%;
 }
 
 ul {
@@ -113,7 +129,9 @@ li a {
   margin: 10px;
   text-decoration: none;
   background-color: rgb(228, 188, 40);
+  box-shadow: none;
   border-radius: 5px;
+  transition: all 0.1s ease-in-out;
 }
 
 /* check idk */
@@ -127,14 +145,28 @@ li a:hover {
 
 h1 {
   font-size: 50px;
+  font-weight: 550;
+  letter-spacing: 0.5px;
   margin-top: 100px;
+  text-shadow: none;
+  color: white;
+  transition: all 0.1s ease-in-out;
 }
+
 
 h2 {
   font-size: 25px;
   font-weight: 300;
   padding-left: 5%;
   padding-right: 5%;
+  text-shadow: none;
+  color: white;
+  transition: all 0.1s ease-in-out;
+}
+
+h1:hover,h2:hover {
+  color: rgb(255, 222, 101);
+  text-shadow: 1px 1px 25px whitesmoke;
 }
 
 div.sizedBox {
@@ -150,13 +182,30 @@ img {
 }
 
 img.about-me-img {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: none;
+    transition: all 0.21s ease-in-out;
+}
+
+img.about-me-img:hover {
+    box-shadow: 16px 16px 30px whitesmoke;
+    position: relative;
+    transform: scale(1.05);
 }
 
 #highlightImg {
     width: 82%;
     aspect-ratio: 3/2;
+    margin-bottom: 40px;
+    box-shadow: none;
+    transition: all 0.21s ease-in-out;
+}
+
+#highlightImg:hover {
+    box-shadow: 16px 16px 50px whitesmoke;
+    position: relative;
+    transform: scale(1.02);
 }
 
 
@@ -181,6 +230,7 @@ img.about-me-img {
   position: relative;
   transform: scale(1.25);
   z-index: 9998;
+  cursor: pointer;
 }
 
 div.center {
