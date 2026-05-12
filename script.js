@@ -94,7 +94,46 @@ const latestPhotos = [
   {"src": "assets/gallery1/img93.JPG", "description": "I'm one spiky plant. -Italian Thistle"},
   {"src": "assets/gallery1/img94.JPG", "description": "I wish I were those pink flowers in the back. -Horehound"},
   {"src": "assets/gallery1/img95.JPG", "description": "I am one invasive creature! -Knapweed"},
-  {"src": "assets/gallery1/img96.JPG", "description": "I hear trumpets... -Person"}
+  {"src": "assets/gallery1/img96.JPG", "description": "I hear trumpets... -Person"},
+  {"src": "assets/gallery1/img97.jpg", "description": "I come with a bit of variety! -Flower"},
+  {"src": "assets/gallery1/img98.jpg", "description": "I have five other siblings, but I'm in the ducklight! -Gosling"},
+  {"src": "assets/gallery1/img99.jpg", "description": "I may have baby wings now, but soon I'll be flying! -Gosling"},
+  {"src": "assets/gallery1/img100.jpg", "description": "Ugh. I'm halfway between a full on goose and a gosling. -Fledgling"},
+  {"src": "assets/gallery1/img101.jpg", "description": "Mine! No, that's my food! -Fledglings"},
+  {"src": "assets/gallery1/img102.jpg", "description": "I'm in between a fledgling and a gosling, so does that mean I'm a toddler? -Gosling"},
+  {"src": "assets/gallery1/img103.jpg", "description": "Check out my plumage! You guys have nothing compared to me! -Goose"},
+  {"src": "assets/gallery1/img104.jpg", "description": "No, I'm not a flamingo. -Goose"},
+  {"src": "assets/gallery1/img105.jpg", "description": "Hey, where'd my sixth baby go? -Goose"},
+  {"src": "assets/gallery1/img106.jpg", "description": "No, I'm not blushing. -Turtle"},
+  {"src": "assets/gallery1/img107.jpg", "description": "Get off my turf! -Goose"},
+  {"src": "assets/gallery1/img108.jpg", "description": "Duck, duck, goose! Oh wait, I'm the duck. Not the goose. -Duck"},
+  {"src": "assets/gallery1/img109.jpg", "description": "Stay hydrated! -Goose"},
+  {"src": "assets/gallery1/img110.jpg", "description": "Hurry it up, I can't wait to get in the water! -Ducks"},
+  {"src": "assets/gallery1/img111.jpg", "description": "Taking flight. -Goose"},
+  {"src": "assets/gallery1/img112.jpg", "description": "No turbulence today, geese! Wouldn't want any trouble. -Duck"},
+  {"src": "assets/gallery1/img113.jpg", "description": "Splash! -Duck"},
+  {"src": "assets/gallery1/img114.jpg", "description": "A quick sip of air. -Turtle"},
+  {"src": "assets/gallery1/img115.jpg", "description": "Hey, don't look at me funny. -Duck"},
+  {"src": "assets/gallery1/img116.jpg", "description": "Grass. Mmm... -Gosling"},
+  {"src": "assets/gallery1/img117.jpg", "description": "Do you like my camouflage? No? Well I'm leafing. -Butterfly"},
+  {"src": "assets/gallery1/img118.jpg", "description": "1..2..3..Oh hi, human. Just doing my daily pushup reps. -Lizard"},
+  {"src": "assets/gallery1/img119.jpg", "description": "Come here, bees! Just don't fall down the chute! -Flower"},
+  {"src": "assets/gallery1/img120.jpg", "description": "Come here...I have a gift for you. Trust me... -Flower | P.S. if you look closely this flower is made out of fabric. I didn't realize this until post-processing. It's odd since I found it at the foot of a tree in a park, and I don't know why someone would go around placing fake flowers there."},
+  {"src": "assets/gallery1/img121.jpg", "description": "Hi camera! Oh, I'm not the star of the show. I'm the sky. -Sky"},
+  {"src": "assets/gallery1/img122.jpg", "description": "One day I'll be tall and mighty. Like that redwood over there! -Sapling"},
+  {"src": "assets/gallery1/img123.jpg", "description": "Nice to bee a flower today. -Flower"},
+  {"src": "assets/gallery1/img124.jpg", "description": "Why are you taking a picture of me? Oh, it's the other plant, isn't it? -Leaves"},
+  {"src": "assets/gallery1/img125.jpg", "description": "I have a colorful background, but I'm still the star of the show! -Flower"},
+  {"src": "assets/gallery1/img126.jpg", "description": "My two loyal flowerguards are here to protect me! -Flower"},
+  {"src": "assets/gallery1/img127.jpg", "description": "Not many pollinators that beelieve in us, but we do in each other! -Flowers"},
+  {"src": "assets/gallery1/img128.jpg", "description": "I'm hanging off to the side. Get a straightener! -Flower"},
+  {"src": "assets/gallery1/img129.jpg", "description": "There's many of us, but only one bee at a time. -Flowers"},
+  {"src": "assets/gallery1/img130.jpg", "description": "Don't bee jealous, bees. -Butterfly"},
+  {"src": "assets/gallery1/img131.jpg", "description": "All these flowers? For me? -Butterfly"},
+  {"src": "assets/gallery1/img132.jpg", "description": "I'm still waiting for a bee. -Flower"},
+  {"src": "assets/gallery1/img133.jpg", "description": "I'm closed till 10 am. -Flower"},
+  {"src": "assets/gallery1/img134.jpg", "description": "Hey, I'm open! Come here, plees! -Flower"},
+  {"src": "assets/gallery1/img135.jpg", "description": "He sees me. -Squirrel"},
 ];
 
 const oldPhotos = [
@@ -266,6 +305,9 @@ var scrollPos = 0;
 var changingPhoto = false;
 var currentImageElement = null;
 
+const highlights = [5, 72, 95, 18];
+var highlightPhotoIndex = Math.floor(Math.random() * highlights.length);
+
 // Index / Home Page
 
 const highlightImg = document.getElementById('highlightImg');
@@ -283,6 +325,11 @@ function loadGallery(photos, gallery) {
         gallery.appendChild(img);
     });
 }
+
+if (highlightImg) {
+    highlightImg.src = latestPhotos[highlights[highlightPhotoIndex]].src;
+}
+
 if (gallery1) {
     loadGallery(latestPhotos, gallery1);
 }
@@ -291,10 +338,13 @@ if (gallery2) {
     loadGallery(oldPhotos, gallery2);
 }
 
-if (highlightImg) {
-    const highlights = [5, 72, 95, 18];
-    const randomIndex = Math.floor(Math.random() * highlights.length);
-    const highlightPhoto = latestPhotos[highlights[randomIndex]];
+function shuffleHighlights() {
+    highlightPhotoIndex = highlightPhotoIndex + 1;
+    if (highlightPhotoIndex >= highlights.length) {
+        highlightPhotoIndex = 0;
+    }
+    console.log(highlightPhotoIndex);
+    const highlightPhoto = latestPhotos[highlights[highlightPhotoIndex]];
     highlightImg.src = highlightPhoto.src;
 }
 
@@ -365,6 +415,7 @@ function changePhoto(direction, photos) { // 1 or -1
     changingPhoto = true;
     modal.classList.add("fade-out");
     setTimeout(() => {
+        console.log(currentIndex, direction, photos.length);
         currentIndex = (currentIndex + direction + photos.length) % photos.length;
         currentImageElement = currentImageElement.parentElement.children[currentIndex];
 
