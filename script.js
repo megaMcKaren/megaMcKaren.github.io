@@ -400,7 +400,7 @@ function closeModal(gallery) {
   });
 
   if (currentImageElement) {
-    currentImageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    currentImageElement.scrollIntoView({ behavior: 'auto', block: 'center' });
   } else {
     window.scrollTo(0, scrollPos);
 }
