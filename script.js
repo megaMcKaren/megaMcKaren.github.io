@@ -329,7 +329,7 @@ function loadGallery(photos, gallery) {
     photos.forEach((photo, index) => {
         const img = document.createElement('img');
         img.src = photo.src;
-        img.loading = 'lazy'
+        img.loading = 'eager'
         img.alt = `Photo ${index + 1}`;
         img.onclick = () => {
             openModal(index, gallery, photos);
@@ -443,7 +443,7 @@ function changePhoto(direction, photos) { // 1 or -1
     }, 140);
     setTimeout(() => {
         changingPhoto = false;
-    }, 400);
+    }, 280);
 }
 
 currentPage = window.location.pathname.split("/").pop();
