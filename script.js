@@ -434,10 +434,10 @@ function changePhoto(direction, photos) { // 1 or -1
         description.textContent = photos[currentIndex].description;
         modalImgCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
         modal.classList.remove("fade-out");
-    }, 125);
+    }, 140);
     setTimeout(() => {
         changingPhoto = false;
-    }, 300);
+    }, 400);
 }
 
 currentPage = window.location.pathname.split("/").pop();
