@@ -133,7 +133,18 @@ const latestPhotos = [
   {"src": "assets/gallery1/img132.JPG", "description": "I'm still waiting for a bee. -Flower"},
   {"src": "assets/gallery1/img133.JPG", "description": "I'm closed till 10 am. -Flower"},
   {"src": "assets/gallery1/img134.JPG", "description": "Hey, I'm open! Come here, plees! -Flower"},
-  {"src": "assets/gallery1/img135.JPG", "description": "He sees me. -Squirrel"}
+  {"src": "assets/gallery1/img135.JPG", "description": "He sees me. -Squirrel"},
+  {"src": "assets/gallery1/img136.JPG", "description": "Laker looking regal! -Cameraman"},
+  {"src": "assets/gallery1/img137.JPG", "description": "I'm gonna sit here and look cute. -Laker"},
+  {"src": "assets/gallery1/img138.JPG", "description": "Crow crow. -Crow"},
+  {"src": "assets/gallery1/img139.JPG", "description": "These are my doritos! -Squirrel"},
+  {"src": "assets/gallery1/img140.JPG", "description": "Check out my patent! -Lock"},
+  {"src": "assets/gallery1/img141.JPG", "description": "I'm under lock and key. -Plant"},
+  {"src": "assets/gallery1/img142.JPG", "description": "Sneaking away...he doesn't see me! -Lizard"},
+  {"src": "assets/gallery1/img143.JPG", "description": "Scarlet Pimpernel is quite a mouthful of a name. -Flower"},
+  {"src": "assets/gallery1/img144.JPG", "description": "I'm spiky, don't touch me! -Caterpillar"},
+  {"src": "assets/gallery1/img145.JPG", "description": "Mix mix mix! -Paintbrush"},
+  {"src": "assets/gallery1/img146.JPG", "description": "Go paint go! -Paintbrush"},
 ];
 
 const oldPhotos = [
