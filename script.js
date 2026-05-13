@@ -329,7 +329,7 @@ function loadGallery(photos, gallery) {
     photos.forEach((photo, index) => {
         const img = document.createElement('img');
         img.src = photo.src;
-        img.loading = 'eager'
+        img.loading = 'lazy'
         img.alt = `Photo ${index + 1}`;
         img.onclick = () => {
             openModal(index, gallery, photos);
@@ -367,6 +367,11 @@ function openModal(index, gallery, photos) {
   currentImageElement = gallery.children[index];
   modalImg.src = photos[index].src;
   description.textContent = photos[index].description;
+
+  preloadNextImage(1, photos);
+  preloadNextImage(2, photos);
+  preloadNextImage(-1, photos);
+  preloadNextImage(-2, photos);
 
   gallery.style.pointerEvents = "none";
   gallery.style.display = "none";
@@ -422,14 +427,18 @@ function closeModal(gallery) {
   modal.style.zIndex = "1";
 }
 
+function preloadNextImage(direction, photos) {
+    const nextIndex = (currentIndex + direction + photos.length) % photos.length;
+    preloadImg.src = photos[nextIndex].src;
+}
+
 function changePhoto(direction, photos) { // 1 or -1
     if (changingPhoto) return;
     changingPhoto = true;
 
     modal.classList.add("fade-out");
 
-    const nextIndex = (currentIndex + direction + photos.length) % photos.length;
-    preloadImg.src = photos[nextIndex].src;
+    preloadNextImage(direction, photos);
 
     setTimeout(() => {
         console.log(currentIndex, direction, photos.length);
@@ -443,7 +452,7 @@ function changePhoto(direction, photos) { // 1 or -1
     }, 140);
     setTimeout(() => {
         changingPhoto = false;
-    }, 280);
+    }, 450);
 }
 
 currentPage = window.location.pathname.split("/").pop();
