@@ -368,10 +368,10 @@ function openModal(index, gallery, photos) {
   modalImg.src = photos[index].src;
   description.textContent = photos[index].description;
 
-  preloadNextImage(1, photos);
-  preloadNextImage(2, photos);
-  preloadNextImage(-1, photos);
-  preloadNextImage(-2, photos);
+  console.log(preloadNextImage(1, photos));
+  console.log(preloadNextImage(2, photos));
+  console.log(preloadNextImage(-1, photos));
+  console.log(preloadNextImage(-2, photos));
 
   gallery.style.pointerEvents = "none";
   gallery.style.display = "none";
@@ -430,6 +430,7 @@ function closeModal(gallery) {
 function preloadNextImage(direction, photos) {
     const nextIndex = (currentIndex + direction + photos.length) % photos.length;
     preloadImg.src = photos[nextIndex].src;
+    return preloadImg.src;
 }
 
 function changePhoto(direction, photos) { // 1 or -1
@@ -441,7 +442,7 @@ function changePhoto(direction, photos) { // 1 or -1
     preloadNextImage(direction, photos);
 
     setTimeout(() => {
-        console.log(currentIndex, direction, photos.length);
+        console.log(currentIndex, direction, photos.length, preloadNextImage(direction, photos));
         currentIndex = (currentIndex + direction + photos.length) % photos.length;
         currentImageElement = currentImageElement.parentElement.children[currentIndex];
 
