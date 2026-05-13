@@ -313,7 +313,7 @@ const modalImgCounter = document.getElementById('modal-img-counter');
 
 var currentIndex = 0;
 var scrollPos = 0;
-var changingPhoto = false;
+var changingPhoto = true;
 var currentImageElement = null;
 var preloadImg = new Image();
 
@@ -368,11 +368,6 @@ function openModal(index, gallery, photos) {
   modalImg.src = photos[index].src;
   description.textContent = photos[index].description;
 
-  console.log(preloadNextImage(1, photos));
-  console.log(preloadNextImage(2, photos));
-  console.log(preloadNextImage(-1, photos));
-  console.log(preloadNextImage(-2, photos));
-
   gallery.style.pointerEvents = "none";
   gallery.style.display = "none";
 
@@ -384,6 +379,15 @@ function openModal(index, gallery, photos) {
   hTwos.forEach(hTwo => {
     hTwo.style.display = "none";
   });
+
+  console.log(preloadNextImage(1, photos));
+  console.log(preloadNextImage(2, photos));
+  console.log(preloadNextImage(-1, photos));
+  console.log(preloadNextImage(-2, photos));
+
+  setTimeout(() => {
+        changingPhoto = false;
+    }, 450);
 }
 
 function closeModal(gallery) {
