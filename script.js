@@ -315,6 +315,7 @@ var currentIndex = 0;
 var scrollPos = 0;
 var changingPhoto = false;
 var currentImageElement = null;
+var preloadImg = new Image();
 
 const highlights = [5, 72, 95, 18];
 var highlightPhotoIndex = Math.floor(Math.random() * highlights.length);
@@ -424,7 +425,12 @@ function closeModal(gallery) {
 function changePhoto(direction, photos) { // 1 or -1
     if (changingPhoto) return;
     changingPhoto = true;
+
     modal.classList.add("fade-out");
+
+    const nextIndex = (currentIndex + direction + photos.length) % photos.length;
+    preloadImg.src = photos[nextIndex].src;
+
     setTimeout(() => {
         console.log(currentIndex, direction, photos.length);
         currentIndex = (currentIndex + direction + photos.length) % photos.length;
