@@ -9,6 +9,19 @@ button {
   cursor: pointer;
 }
 
+video {
+  border-radius: 35px;
+  box-shadow: none;
+  transition: all 0.1s ease-in-out;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+video:hover {
+  box-shadow: 1px 1px 20px whitesmoke;
+  position: relative;
+}
+
 #modal {
   display: none;
   position: fixed;
