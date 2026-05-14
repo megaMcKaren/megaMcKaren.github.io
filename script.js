@@ -501,6 +501,12 @@ function changePhoto(direction, photos) { // 1 or -1
     }, 350);
 }
 
+function skipLoading(gallery) {
+    loadingScreen.style.display = "none";
+    sessionStorage.setItem(gallery, false);
+    sessionStorage.setItem(gallery, false);
+}
+
 currentPage = window.location.pathname.split("/").pop();
 
 document.addEventListener('keydown', (event) => {

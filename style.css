@@ -13,6 +13,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 15000;
@@ -40,6 +41,16 @@
 
 button {
   cursor: pointer;
+}
+
+#skip-loading-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(228, 188, 40);
+  color: black;
+  border: none;
+  border-radius: 5px;
 }
 
 video {
