@@ -329,7 +329,7 @@ function loadGallery(photos, gallery) {
     photos.forEach((photo, index) => {
         const img = document.createElement('img');
         img.src = photo.src;
-        img.loading = 'lazy'
+        img.loading = 'eager';
         img.alt = `Photo ${index + 1}`;
         img.onclick = () => {
             openModal(index, gallery, photos);
@@ -432,20 +432,6 @@ function preloadNextImage(direction, photos) {
     return preloadImg.src;
 }
 
-function preloadAllImages(photos) {
-    photos.forEach(photo => {
-        const img = new Image();
-        img.src = photo.src;
-    });
-}
-
-function preloadAllImagesAsync(photos) {
-    photos.forEach(photo => {
-        const img = new Image();
-        img.src = photo.src;
-    }, index * 10);
-}
-
 function changePhoto(direction, photos) { // 1 or -1
     if (changingPhoto) return;
     changingPhoto = true;
@@ -497,9 +483,4 @@ document.addEventListener('keydown', (event) => {
             }
         }
     }
-});
-
-window.addEventListener('load', (event) => {
-    preloadAllImagesAsync(latestPhotos);
-    preloadAllImagesAsync(oldPhotos);
 });
