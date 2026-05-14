@@ -439,6 +439,13 @@ function preloadAllImages(photos) {
     });
 }
 
+function preloadAllImagesAsync(photos) {
+    photos.forEach(photo => {
+        const img = new Image();
+        img.src = photo.src;
+    }, index * 10);
+}
+
 function changePhoto(direction, photos) { // 1 or -1
     if (changingPhoto) return;
     changingPhoto = true;
@@ -493,6 +500,6 @@ document.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('load', (event) => {
-    preloadAllImages(latestPhotos);
-    preloadAllImages(oldPhotos);
+    preloadAllImagesAsync(latestPhotos);
+    preloadAllImagesAsync(oldPhotos);
 });
