@@ -380,14 +380,9 @@ function openModal(index, gallery, photos) {
     hTwo.style.display = "none";
   });
 
-  console.log(preloadNextImage(1, photos));
-  console.log(preloadNextImage(2, photos));
-  console.log(preloadNextImage(-1, photos));
-  console.log(preloadNextImage(-2, photos));
-
   setTimeout(() => {
         changingPhoto = false;
-    }, 450);
+    }, 200);
 }
 
 function closeModal(gallery) {
@@ -437,6 +432,13 @@ function preloadNextImage(direction, photos) {
     return preloadImg.src;
 }
 
+function preloadAllImages(photos) {
+    photos.forEach(photo => {
+        const img = new Image();
+        img.src = photo.src;
+    });
+}
+
 function changePhoto(direction, photos) { // 1 or -1
     if (changingPhoto) return;
     changingPhoto = true;
@@ -446,7 +448,6 @@ function changePhoto(direction, photos) { // 1 or -1
     preloadNextImage(direction, photos);
 
     setTimeout(() => {
-        console.log(currentIndex, direction, photos.length, preloadNextImage(direction, photos));
         currentIndex = (currentIndex + direction + photos.length) % photos.length;
         currentImageElement = currentImageElement.parentElement.children[currentIndex];
 
@@ -457,7 +458,7 @@ function changePhoto(direction, photos) { // 1 or -1
     }, 140);
     setTimeout(() => {
         changingPhoto = false;
-    }, 450);
+    }, 350);
 }
 
 currentPage = window.location.pathname.split("/").pop();
@@ -489,4 +490,9 @@ document.addEventListener('keydown', (event) => {
             }
         }
     }
+});
+
+window.addEventListener('load', (event) => {
+    preloadAllImages(latestPhotos);
+    preloadAllImages(oldPhotos);
 });
