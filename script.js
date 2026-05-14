@@ -325,11 +325,13 @@ var highlightPhotoIndex = Math.floor(Math.random() * highlights.length);
 const highlightImg = document.getElementById('highlightImg');
 const highlightCaption = document.getElementById('highlightCaption');
 
+const loadingScreen = document.getElementById('loading-screen');
+
 function loadGallery(photos, gallery) {
     photos.forEach((photo, index) => {
         const img = document.createElement('img');
         img.src = photo.src;
-        img.loading = 'eager';
+        img.loading = 'lazy';
         img.alt = `Photo ${index + 1}`;
         img.onclick = () => {
             openModal(index, gallery, photos);
@@ -426,7 +428,52 @@ function closeModal(gallery) {
   modal.style.zIndex = "1";
 }
 
+function preloadList(photos, order = "random") {
+    if (order === "random") {
+        photos = photos.sort(() => Math.random() - 0.5);
+    } else if (order === "reverse") {
+        photos = photos.reverse();
+    }
+
+    photos.forEach((photo) => {
+        const img = new Image();
+        img.src = photo.src;
+    });
+}
+
+function loadAndCallback(photos, callback) {
+    let loadedCount = 0;
+    photos.forEach((photo) => {
+        const img = new Image();
+        img.src = photo.src;
+        img.onload = () => {
+            loadedCount++;
+            if (loadedCount === photos.length) {
+                callback();
+            }
+        };
+    });
+}
+
+function preloadAllImages(order = "sequential") {
+    loadingScreen.style.display = "flex";
+    loadAndCallback(latestPhotos, () => {
+        loadAndCallback(oldPhotos, () => {
+            loadingScreen.style.display = "none";
+            sessionStorage.setItem('galleriesUnloaded', false);
+            console.log("all galleries loaded");
+        });
+    });
+}   
+
+function loadGalleries() {
+    loadingScreen.style.display = "flex";
+    console.log("starting to load galleries");
+    preloadAllImages();
+}
+
 function preloadNextImage(direction, photos) {
+
     const nextIndex = (currentIndex + direction + photos.length) % photos.length;
     preloadImg.src = photos[nextIndex].src;
     return preloadImg.src;
@@ -457,30 +504,46 @@ function changePhoto(direction, photos) { // 1 or -1
 currentPage = window.location.pathname.split("/").pop();
 
 document.addEventListener('keydown', (event) => {
-    if (modal.style.display === "flex") {
-        if (event.key === 'ArrowRight') {
-            if (currentPage === "gallery1.html") {
-            changePhoto(1, latestPhotos);
-        }
-        else if (currentPage === "gallery2.html") {
-            changePhoto(1, oldPhotos);
-        }
-        }
-        else if (event.key === 'ArrowLeft') {
-            if (currentPage === "gallery1.html") {
-                changePhoto(-1, latestPhotos);
+    if (currentPage === "gallery1.html" || currentPage === "gallery2.html") {
+        if (modal.style.display === "flex") {
+            if (event.key === 'ArrowRight') {
+                if (currentPage === "gallery1.html") {
+                changePhoto(1, latestPhotos);
             }
             else if (currentPage === "gallery2.html") {
-                changePhoto(-1, oldPhotos);
+                changePhoto(1, oldPhotos);
             }
-        }
-        else if (event.key === 'Escape') {
-            if (currentPage === "gallery1.html") {
-                closeModal(gallery1);
             }
-            else if (currentPage === "gallery2.html") {
-                closeModal(gallery2);
+            else if (event.key === 'ArrowLeft') {
+                if (currentPage === "gallery1.html") {
+                    changePhoto(-1, latestPhotos);
+                }
+                else if (currentPage === "gallery2.html") {
+                    changePhoto(-1, oldPhotos);
+                }
+            }
+            else if (event.key === 'Escape') {
+                if (currentPage === "gallery1.html") {
+                    closeModal(gallery1);
+                }
+                else if (currentPage === "gallery2.html") {
+                    closeModal(gallery2);
+                }
             }
         }
     }
 });
+
+onload = () => {
+    if (currentPage === "gallery1.html" || currentPage === "gallery2.html" || currentPage === "index.html" || currentPage === "") {
+        loadingScreen.style.display = "none";
+        if (sessionStorage.getItem('galleriesUnloaded') !== 'false') {
+            loadingScreen.style.display = "flex";
+            console.log(loadingScreen.style.display);
+            console.log("galleries not loaded, loading now");
+            loadGalleries();
+        } else {
+            console.log("galleries already loaded");
+        }
+    }
+}
