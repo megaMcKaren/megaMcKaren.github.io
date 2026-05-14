@@ -310,6 +310,7 @@ const modalImg = document.getElementById('modal-image');
 const modalImgBuffer = document.getElementById('modal-image-buffer');
 const description = document.getElementById('modal-desc');
 const modalImgCounter = document.getElementById('modal-img-counter');
+const skipLoadingButton = document.getElementById('skip-loading-btn');
 
 var currentIndex = 0;
 var scrollPos = 0;
@@ -509,6 +510,25 @@ function skipLoading(gallery) {
     sessionStorage.setItem(gallery, false);
 }
 
+function skipLoadingTimer(gallery) {
+    skipLoadingButton.disabled = true;
+    let timeLeft = 5;
+    skipLoadingButton.textContent = `Skip Loading in ${timeLeft} seconds...`;
+
+    const interval = setInterval(() => {
+        timeLeft -= 1;
+
+        skipLoadingButton.textContent = `Skip Loading in ${timeLeft} seconds...`;
+        
+        if (timeLeft === 0) {
+            skipLoadingButton.disabled = false;
+            skipLoadingButton.textContent = "Skip Loading";
+
+            clearInterval(interval);
+        }
+    }, 1000);
+}
+
 currentPage = window.location.pathname.split("/").pop();
 
 document.addEventListener('keydown', (event) => {
@@ -549,6 +569,8 @@ onload = () => {
 
             loadingScreen.style.display = "flex";
 
+            skipLoadingTimer('gallery1Unloaded');
+
             loadAndCallback(latestPhotos, () => {
                 loadingScreen.style.display = "none";
                 sessionStorage.setItem('gallery1Unloaded', false);
@@ -558,6 +580,8 @@ onload = () => {
         if (sessionStorage.getItem('gallery2Unloaded') !== 'false') {
 
             loadingScreen.style.display = "flex";
+
+            skipLoadingTimer('gallery2Unloaded');
             
             loadAndCallback(oldPhotos, () => {
                 loadingScreen.style.display = "none";
