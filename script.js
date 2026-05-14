@@ -535,15 +535,42 @@ document.addEventListener('keydown', (event) => {
 });
 
 onload = () => {
-    if (currentPage === "gallery1.html" || currentPage === "gallery2.html" || currentPage === "index.html" || currentPage === "") {
-        loadingScreen.style.display = "none";
-        if (sessionStorage.getItem('galleriesUnloaded') !== 'false') {
+    if (currentPage === "gallery1.html") {
+        if (sessionStorage.getItem('gallery1Unloaded') !== 'false') {
             loadingScreen.style.display = "flex";
             console.log(loadingScreen.style.display);
-            console.log("galleries not loaded, loading now");
-            loadGalleries();
+            console.log("gallery 1 not loaded, loading now");
+            loadAndCallback(latestPhotos, () => {
+                loadingScreen.style.display = "none";
+                sessionStorage.setItem('gallery1Unloaded', false);
+                console.log("gallery 1 loaded");
+            });
         } else {
-            console.log("galleries already loaded");
+            console.log("gallery 1 already loaded");
+        }
+    } else if (currentPage === "gallery2.html") {
+        if (sessionStorage.getItem('gallery2Unloaded') !== 'false') {
+            loadingScreen.style.display = "flex";
+            console.log(loadingScreen.style.display);
+            console.log("gallery 2 not loaded, loading now");
+            loadAndCallback(oldPhotos, () => {
+                loadingScreen.style.display = "none";
+                sessionStorage.setItem('gallery2Unloaded', false);
+                console.log("gallery 2 loaded");
+            });
+        } else {
+            console.log("gallery 2 already loaded");
         }
     }
+    // if (currentPage === "gallery1.html" || currentPage === "gallery2.html" || currentPage === "index.html" || currentPage === "") {
+    //     loadingScreen.style.display = "none";
+    //     if (sessionStorage.getItem('galleriesUnloaded') !== 'false') {
+    //         loadingScreen.style.display = "flex";
+    //         console.log(loadingScreen.style.display);
+    //         console.log("galleries not loaded, loading now");
+    //         loadGalleries();
+    //     } else {
+    //         console.log("galleries already loaded");
+    //     }
+    // }
 }
